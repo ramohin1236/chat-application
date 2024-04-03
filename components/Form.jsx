@@ -8,6 +8,8 @@ import {
   import { useForm } from 'react-hook-form';
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
+import { signIn } from 'next-auth/react';
 
 
 
@@ -35,6 +37,7 @@ const Form = ({type}) => {
           });
     
           if (res.ok) {
+            toast.success("User Created Successfully");
             router.push("/");
           }
     
@@ -50,6 +53,7 @@ const Form = ({type}) => {
           })
     
           if (res.ok) {
+            toast.success("User Logged In Successfully");
             router.push("/chats");
           }
     
