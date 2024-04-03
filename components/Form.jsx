@@ -5,6 +5,7 @@ import {
     LockOutlined,
     PersonOutline,
   } from "@mui/icons-material";
+
   import { useForm } from 'react-hook-form';
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -14,6 +15,8 @@ import { signIn } from 'next-auth/react';
 
 
 const Form = ({type}) => {
+   
+   
     const {
         register,
         handleSubmit,
