@@ -2,8 +2,8 @@
 
 import { useSession } from "next-auth/react";
 import { use, useEffect, useState } from "react";
-// import ChatBox from "./ChatBox";
 import Loader from "./Loader";
+import ChatBox from "./ChatBox";
 // import { pusherClient } from "@lib/pusher";
 
 const ChatList = ({ currentChatId }) => {
@@ -12,28 +12,25 @@ const ChatList = ({ currentChatId }) => {
 
   const [loading, setLoading] = useState(true);
   const [chats, setChats] = useState([]);
+  console.log("chats",chats);
   const [search, setSearch] = useState("");
 
-//   const getChats = async () => {
-//     try {
-//       const res = await fetch(
-//         search !== ""
-//           ? `/api/users/${currentUser._id}/searchChat/${search}`
-//           : `/api/users/${currentUser._id}`
-//       );
-//       const data = await res.json();
-//       setChats(data);
-//       setLoading(false);
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   };
+  const getChats = async () => {
+    try {
+      const res = await fetch(`/api/users/${currentUser._id}`);
+      const data = await res.json();
+      setChats(data);
+      setLoading(false);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-//   useEffect(() => {
-//     if (currentUser) {
-//       getChats();
-//     }
-//   }, [currentUser, search]);
+  useEffect(() => {
+    if (currentUser) {
+      getChats();
+    }
+  }, [currentUser, search]);
 
 //   useEffect(() => {
 //     if (currentUser) {
@@ -78,14 +75,15 @@ const ChatList = ({ currentChatId }) => {
       />
 
       <div className="chats">
-        {/* {chats?.map((chat, index) => (
+        {chats?.map((chat, index) => (
           <ChatBox
+          key={index}
             chat={chat}
             index={index}
             currentUser={currentUser}
             currentChatId={currentChatId}
           />
-        ))} */}
+        ))}
       </div>
     </div>
   );
