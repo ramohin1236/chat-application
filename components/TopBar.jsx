@@ -5,7 +5,6 @@ import { Logout } from "@mui/icons-material";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import PersonIcon from '@mui/icons-material/Person';
 
 
 const TopBar = () => {
@@ -50,7 +49,7 @@ const TopBar = () => {
 
         <Link href="/profile">
           <img
-            src={user?.profileImage ||<PersonIcon/>}
+            src={user?.profileImage ||"/user-circle.svg"}
             alt="profile"
             className="profilePhoto"
           />
