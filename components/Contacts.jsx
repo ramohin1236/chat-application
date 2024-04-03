@@ -1,4 +1,5 @@
-"use client";
+/* eslint-disable @next/next/no-img-element */
+"use client"
 
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
@@ -55,7 +56,9 @@ const Contacts = () => {
 
   /* CREATE CHAT */
   const createChat = async () => {
-    const res = await fetch("/api/chats", {
+    
+  
+    const res = await fetch("/api/Chats", {
       method: "POST",
       body: JSON.stringify({
         currentUserId: currentUser._id,
@@ -94,7 +97,7 @@ const Contacts = () => {
                 onClick={() => handleSelect(user)}
               >
                 {selectedContacts.find((item) => item === user) ? (
-                  <CheckCircle sx={{ color: "red" }} />
+                  <CheckCircle sx={{ color: "blue" }} />
                 ) : (
                   <RadioButtonUnchecked />
                 )}
