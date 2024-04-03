@@ -17,7 +17,8 @@ const ChatList = ({ currentChatId }) => {
 
   const getChats = async () => {
     try {
-      const res = await fetch(`/api/users/${currentUser._id}`);
+      const res = await fetch(   search !== ""
+      ?`/api/users/${currentUser._id}/searchChat/${search}` : `/api/users/${currentUser._id}`);
       const data = await res.json();
       setChats(data);
       setLoading(false);
@@ -68,10 +69,10 @@ const ChatList = ({ currentChatId }) => {
   ) : (
     <div className="chat-list">
       <input
-        placeholder="Search chat..."
+        placeholder="Search-group  chat..."
         className="input-search"
-        // value={search}
-        // onChange={(e) => setSearch(e.target.value)}
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
       />
 
       <div className="chats">
