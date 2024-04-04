@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import Loader from "@components/Loader";
@@ -15,7 +16,7 @@ const GroupInfo = () => {
 
   const getChatDetails = async () => {
     try {
-      const res = await fetch(`/api/chats/${chatId}`);
+      const res = await fetch(`/api/Chats/${chatId}`);
       const data = await res.json();
       setChat(data);
       setLoading(false);
@@ -52,7 +53,7 @@ const GroupInfo = () => {
   const updateGroupChat = async (data) => {
     setLoading(true);
     try {
-      const res = await fetch(`/api/chats/${chatId}/update`, {
+      const res = await fetch(`/api/Chats/${chatId}/update`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -93,7 +94,7 @@ const GroupInfo = () => {
 
         <div className="flex items-center justify-between">
           <img
-            src={watch("groupPhoto") || "/assets/group.png"}
+            src={watch("groupPhoto") || "/users.svg"}
             alt="profile"
             className="w-40 h-40 rounded-full"
           />

@@ -1,7 +1,7 @@
 
 import Chat from "@models/Chat";
 import User from "@models/User";
-// import Message from "@models/Message";
+import Message from "@models/Message";
 
 import { connectToDB } from "@mongodb";
 
@@ -19,7 +19,7 @@ export const GET = async (req, { params }) => {
       })
       .populate({
         path: "messages",
-        // model: Message,
+        model: Message,
         populate: {
           path: "sender seenBy",
           model: User,

@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-
+import { pusherClient } from "@lib/pusher";
 import { useState, useEffect, useRef } from "react";
 import Loader from "./Loader";
 import { AddPhotoAlternate } from "@mui/icons-material";
@@ -8,8 +8,8 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { CldUploadButton } from "next-cloudinary";
 import MessageBox from "./MessageBox";
-// import MessageBox from "./MessageBox";
-// import { pusherClient } from "@lib/pusher";
+
+
 
 const ChatDetails = ({ chatId }) => {
   const [loading, setLoading] = useState(true);
@@ -85,7 +85,7 @@ const ChatDetails = ({ chatId }) => {
   };
 
   useEffect(() => {
-    // pusherClient.subscribe(chatId);
+    pusherClient.subscribe(chatId);
 
     const handleMessage = async (newMessage) => {
       setChat((prevChat) => {
@@ -96,11 +96,11 @@ const ChatDetails = ({ chatId }) => {
       });
     };
 
-    // pusherClient.bind("new-message", handleMessage);
+    pusherClient.bind("new-message", handleMessage);
 
     return () => {
-    //   pusherClient.unsubscribe(chatId);
-    //   pusherClient.unbind("new-message", handleMessage);
+      pusherClient.unsubscribe(chatId);
+      pusherClient.unbind("new-message", handleMessage);
     };
   }, [chatId]);
 
