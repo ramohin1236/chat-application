@@ -11,6 +11,7 @@ import MessageBox from "./MessageBox";
 
 
 
+
 const ChatDetails = ({ chatId }) => {
   const [loading, setLoading] = useState(true);
   const [chat, setChat] = useState({});
@@ -76,7 +77,7 @@ const ChatDetails = ({ chatId }) => {
         body: JSON.stringify({
           chatId,
           currentUserId: currentUser._id,
-          photo: result?.info?.secure_url,
+          photo:  result?.info?.secure_url,
         }),
       });
     } catch (err) {
@@ -167,7 +168,7 @@ const ChatDetails = ({ chatId }) => {
             <CldUploadButton
               options={{ maxFiles: 1 }}
               onUpload={sendPhoto}
-              uploadPreset="upecg01j"
+              uploadPreset="cppgl7jc"
             >
               <AddPhotoAlternate
                 sx={{
